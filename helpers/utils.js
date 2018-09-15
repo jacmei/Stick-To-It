@@ -52,7 +52,7 @@ function addURL(url, mode){
     default:
 	return false;
     }
-    l = getCookie("blacklist");
+    l = getCookie(name);
     nl_tracker = getCookie(nl);
     
     l = JSON.parse(l);
