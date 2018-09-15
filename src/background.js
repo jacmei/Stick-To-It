@@ -18,6 +18,8 @@ var bl_tracker = {}; // {<String unproductive url>: [<int daily>, <int weekly>, 
 var wl_tracker = {}; // {<String productive url>: [<int daily>, <int weekly>, <int all_time>]}
 var badhourslist = [[(now.getMonth() + 1) + "/" + now.getDate(), 0]];
 var goodhourslist = [[(now.getMonth() + 1) + "/" + now.getDate(), 0]]
+var uptime = [[(now.getMonth() + 1) + "/" + now.getDate(), 0]];
+setCookie('uptime', uptime);
 
 // init bl_tracker
 for (var i = 0; i < blacklist.length; i++){
@@ -38,6 +40,8 @@ blacklist = JSON.stringify(blacklist);
 whitelist = JSON.stringify(whitelist);
 badhourslist = JSON.stringify(badhourslist);
 goodhourslist = JSON.stringify(goodhourslist);
+uptime = JSON.stringify(uptime);
+
 
 // make cookies
 setCookie('bl_tracker', bl_tracker);
@@ -46,7 +50,6 @@ setCookie('blacklist', blacklist);
 setCookie('whitelist', whitelist);
 setCookie('badhourslist', badhourslist);
 setCookie('goodhourslist', goodhourslist);
-<<<<<<< HEAD
 
 /*
 function resetIdleCookie(){
@@ -83,10 +86,3 @@ function setupIdle() {
 
 }
 setupIdle();
-<<<<<<< HEAD
-*/
-
-=======
->>>>>>> cf7edaf... alskdfjalkfj
-=======
->>>>>>> e48ce78... changes

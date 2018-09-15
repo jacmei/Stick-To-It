@@ -76,8 +76,9 @@ var update = function updateData(){
     var wl_tracker = getCookie('wl_tracker');
     var badhourslist = getCookie('badhourslist');
     var goodhourslist = getCookie('goodhourslist');
-
-    console.log(goodhourslist);
+    var uptime = getCookie('uptime');
+    
+    console.log(uptime);
     // Convert JSON strings into objects
     blacklist = JSON.parse(blacklist);
     whitelist = JSON.parse(whitelist);
@@ -85,9 +86,11 @@ var update = function updateData(){
     wl_tracker = JSON.parse(wl_tracker);
     badhourslist = JSON.parse(badhourslist);
     goodhourslist = JSON.parse(goodhourslist);
+    uptime = JSON.parse(uptime)
+
     
     // Update bl_tracker
-
+    var up = true;
     for (var i = 0; i < blacklist.length; i++){
 
 
@@ -111,6 +114,7 @@ var update = function updateData(){
 	    bl_tracker[blacklist[i]][DAILY] += 1;
 	    bl_tracker[blacklist[i]][WEEKLY] += 1;
 	    bl_tracker[blacklist[i]][ALL_TIME] += 1;
+	    up = false;
 	}
     }
 
@@ -137,22 +141,42 @@ var update = function updateData(){
 	    wl_tracker[whitelist[i]][DAILY] += 1;
 	    wl_tracker[whitelist[i]][WEEKLY] += 1;
 	    wl_tracker[whitelist[i]][ALL_TIME] += 1;
+	    up = false;
 	}
     }
+
+
+    if (now.getHours() == 0 && now.getMinutes() == 0 && now.getSeconds() == 0){
+	
+	
+	
+	uptime.push([(now.getMonth() + 1) + "/" + now.getDate(), 0]);
+    }
+    
+    if (up){
+
+	uptime[uptime.length - 1][1] += 1;
+    }
+    
+    up = true;
+    
   
     // Put back the updated bl_tracker and wl_tracker into cookies
     bl_tracker = JSON.stringify(bl_tracker);
     wl_tracker = JSON.stringify(wl_tracker);
     badhourslist = JSON.stringify(badhourslist);
     goodhourslist = JSON.stringify(goodhourslist);
+    uptime = JSON.stringify(uptime);
+
     
     setCookie('bl_tracker', bl_tracker);
     setCookie('wl_tracker', wl_tracker);
     setCookie('badhourslist', badhourslist);
     setCookie('goodhourslist', goodhourslist);
+    setCookie('uptime', uptime);
 }
 //updateData();
 setupIdle();
-setInterval(update, 500);
+setInterval(update, 1000);
 
-setInterval(inc, 500);
+setInterval(inc, 1000);

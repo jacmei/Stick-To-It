@@ -6,24 +6,23 @@
     fill: none;
     stroke: black;
   }
-  div.inline {
-    float:left;
-  }
   </style>
 </head>
 <body>
-  <div class="inline">
-  <canvas id="myChart" width="750" height="500"></canvas>
-  </div>
-  <div class="inline" id="pieChart"></div>
+  
   <script src="/chart_js/Chart.bundle.js"></script>
   <script src="/chart_js/Chart.bundle.min.js"></script>
   <script src="/chart_js/Chart.js"></script>
   <script src="/chart_js/Chart.min.js"></script>
+  <canvas id="myChart" width="500" height="500"></canvas>
+  <script src="/helpers/utils.js"></script>
   <script src="/helpers/linechart.js"></script>
   <div id="pieChart"></div>
   <script src="/chart_js/d3.min.js"></script>
   <script src="/chart_js/d3pie.min.js"></script>
   <script src="/src/piechart.js"></script>
+  <br>
+  <p id="topthree"></p>
+  <script src="/src/display.js"></script>
 </body>
 </html>

@@ -1,11 +1,27 @@
+var chartLabels = [7];
+var chartData = [7];
+
+var badhourslist = getCookie('badhourslist');
+badhourslist = JSON.parse(badhourslist);
+
+var firstIndex = badhourslist.length - 6;
+for (var i = firstIndex; i <= badhourslist.length; i++){
+    if (i > 0){
+	chartLabels[i - 1] = badhourslist[i - 1][0];
+	chartData[i - 1] = badhourslist[i - 1][1];
+    }
+}
+
+console.log("hello")
+
 var ctx = document.getElementById("myChart");
 var myChart = new Chart(ctx, {
     type: 'line',
     data: {
-        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+        labels: chartLabels,
         datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
+            label: 'Time',
+            data: chartData,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
