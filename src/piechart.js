@@ -1,3 +1,4 @@
+//Creates a pie chart
 var pie = new d3pie("pieChart", {
 	"header": {
 		"title": {
