@@ -103,7 +103,7 @@ function removeURL(url, mode){
 	    break;
 	}
     }
-    delete l[i];
+    l.splice(i,1);
     delete nl_tracker[url];
     l = JSON.stringify(l);
     nl_tracker = JSON.stringify(nl_tracker);
