@@ -2,11 +2,20 @@
     "name": "Stick To It",
     "version": "1.0",
     "description": "Anti-procrastination visualized",
-    "permissions": ["activeTab", "declarativeContent", "storage"],
+    "permissions": ["activeTab", "declarativeContent", "storage","tabs"],
     "background": {
-	"scripts": ["/helpers/utils.js","/src/background.js"],
-	"persistent": false
+	"scripts": ["/helpers/utils.js","/src/popup.js"],
+	"persistent": true
     },
+    "content_scripts": [
+	{
+	    "matches": [
+		"http://*/*",
+		"https://*/*"
+            ],
+	    "js": ["/helpers/utils.js","/src/background.js"]
+	}
+    ],
     "options_page": "/html/options.html",
     "page_action": {
 	"default_popup": "/html/popup.html",

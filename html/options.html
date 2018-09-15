@@ -1,15 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <script src="/src/options.js"></script>
+  <script src="/helpers/utils.js"></script>
+
+  <style>
+    textarea {
+      resize: none;
+    }
+  </style>
 </head>
 <body>
   <h2>Unproductive</h2>
   <br>
-  <form id="unproductive" action="" method="get">
-    <input type="text" name="unproductive_website" value="">
-  </form>
-  <button id="click-this">Add</button>
-
+    <form id="unproductive" action="" method="get">
+      <input type="text" name="unproductive_website" value="">
+      <button type="button" id="click-this">Add</button>
+      <br>
+      <input type="text" name="del_unproductive" value="">
+      <button type="button" id="del-this">Delete</button>
+    </form>
+  <br>
+  <textarea id="unproductive_ta" rows=10 cols=20></textarea>
+  <br>
+  <br>
+  <h2>Productive</h2>
+  <br>
+    <form id="productive" action="" method="get">
+      <input type="text" name="productive_website" value="">
+      <button type="button" id="click-this-2">Add</button>
+      <br>
+      <input type="text" name="del_productive" value="">
+      <button type="button" id="del-this-2">Delete</button>
+    </form>
+  <br>
+  <textarea id="productive_ta" rows=10 cols=20></textarea>
+  <script src="/src/options.js"></script>
 </body>
 </html>

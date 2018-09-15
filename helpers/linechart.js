@@ -1,51 +1,31 @@
-//Initializes a line chart with w width and h height
-function InitChart(w, h) {
-  var data = [{
-  }];
-  var data2 = [{
-  }];
-
-  var vis = d3.select("#visualisation"),
-  WIDTH = w,
-  HEIGHT = h,
-  MARGINS = {
-    top: 20,
-    right: 20,
-    bottom: 20,
-    left: 50
-  },
-  xScale = d3.scale.linear().range([MARGINS.left, WIDTH - MARGINS.right]).domain([0, 50]),
-  yScale = d3.scale.linear().range([HEIGHT - MARGINS.top, MARGINS.bottom]).domain([0, 30]),
-  xAxis = d3.svg.axis()
-  .scale(xScale),
-  yAxis = d3.svg.axis()
-  .scale(yScale)
-  .orient("left");
-
-  vis.append("svg:g")
-  .attr("class", "x axis")
-  .attr("transform", "translate(0," + (HEIGHT - MARGINS.bottom) + ")")
-  .call(xAxis);
-  vis.append("svg:g")
-  .attr("class", "y axis")
-  .attr("transform", "translate(" + (MARGINS.left) + ",0)")
-  .call(yAxis);
-  var lineGen = d3.svg.line()
-  .x(function(d) {
-    return xScale(d.year);
-  })
-  .y(function(d) {
-    return yScale(d.sale);
-  })
-  .interpolate("basis");
-  vis.append('svg:path')
-  .attr('d', lineGen(data))
-  .attr('stroke', 'green')
-  .attr('stroke-width', 2)
-  .attr('fill', 'none');
-  vis.append('svg:path')
-  .attr('d', lineGen(data2))
-  .attr('stroke', 'blue')
-  .attr('stroke-width', 2)
-  .attr('fill', 'none');
-}
+var ctx = document.getElementById("myChart");
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+        datasets: [{
+            label: '# of Votes',
+            data: [12, 19, 3, 5, 2, 3],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+      responsive : false,
+    }
+});
