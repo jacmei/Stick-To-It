@@ -18,13 +18,13 @@ chrome.runtime.onInstalled.addListener(function() {
     
 });
 
-
+var now = new Date();
 var blacklist = ['facebook.com','reddit.com','imgur.com']; //default unproductive sites
 var whitelist = ['wikipedia.com', 'stackoverflow.com', 'google.com']; //default productive sites
 var bl_tracker = {}; // {<String unproductive url>: [<int daily>, <int weekly>, <int all_time>]}
 var wl_tracker = {}; // {<String productive url>: [<int daily>, <int weekly>, <int all_time>]}
-var masterlist;
-
+var badhourslist = [[(now.getMonth() + 1) + "/" + now.getDay(), 0]];
+var goodhourslist = [[(now.getMonth() + 1) + "/" + now.getDay(), 0]]
 
 // init bl_tracker
 for (var i = 0; i < blacklist.length; i++){
@@ -43,16 +43,18 @@ bl_tracker = JSON.stringify(bl_tracker);
 wl_tracker = JSON.stringify(wl_tracker);
 blacklist = JSON.stringify(blacklist);
 whitelist = JSON.stringify(whitelist);
-masterlist = JSON.stringify(masterlist);
-
+badhourslist = JSON.stringify(badhourslist);
+goodhourslist = JSON.stringify(goodhourslist);
 
 // make cookies
 setCookie('bl_tracker', bl_tracker);
 setCookie('wl_tracker', wl_tracker);
 setCookie('blacklist', blacklist);
 setCookie('whitelist', whitelist);
-setCookie('masterlist', masterlist);
+setCookie('badhourslist', badhourslist);
+setCookie('goodhourslist', goodhourslist);
 
+/*
 function resetIdleCookie(){
     console.log("hello");
     var url = null; 
@@ -87,5 +89,5 @@ function setupIdle() {
  
 }
 setupIdle();
-
+*/
 
