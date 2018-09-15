@@ -1,4 +1,5 @@
 //Allows blacklisting and whitelisting websites for unproductivity/productivity categorization
+var goal;
 
 document.addEventListener('DOMContentLoaded', function() {
   document.getElementById("click-this").addEventListener("click", getSubmit
@@ -42,6 +43,16 @@ function delSubmit2() {
   document.getElementById("productive").elements[2].value = "";
   removeURL(nameValue, WL);
   populationTextArea();
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById("click-this").addEventListener("click", setGoal
+)});
+
+function setGoal() {
+  var nameValue = document.getElementById("goal").elements[0].value;
+  document.getElementById("unproductive").elements[0].value = "";
+  goal = nameValue;
 }
 
 function populationTextArea() {

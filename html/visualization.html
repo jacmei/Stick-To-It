@@ -6,10 +6,16 @@
     fill: none;
     stroke: black;
   }
+  div.inline {
+    float:left;
+  }
   </style>
 </head>
 <body>
-  <canvas id="myChart" width="500" height="500"></canvas>
+  <div class="inline">
+  <canvas id="myChart" width="750" height="500"></canvas>
+  </div>
+  <div class="inline" id="pieChart"></div>
   <script src="/chart_js/Chart.bundle.js"></script>
   <script src="/chart_js/Chart.bundle.min.js"></script>
   <script src="/chart_js/Chart.js"></script>
